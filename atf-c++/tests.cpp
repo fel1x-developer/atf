@@ -49,6 +49,7 @@ extern "C" {
 #include <memory>
 #include <sstream>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 extern "C" {
@@ -155,8 +156,8 @@ public:
     atf_tc_t m_tc;
     bool m_has_cleanup;
 
-    tc_impl(const std::string& ident, const bool has_cleanup) :
-        m_ident(ident),
+    tc_impl(std::string ident, const bool has_cleanup) :
+        m_ident(std::move(ident)),
         m_has_cleanup(has_cleanup)
     {
     }

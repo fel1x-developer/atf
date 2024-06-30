@@ -60,7 +60,7 @@ class option {
     friend class app;
 
 public:
-    option(char, const std::string&, const std::string&);
+    option(char, std::string, std::string);
 
     bool operator<(const option&) const;
 };
@@ -95,7 +95,7 @@ protected:
     virtual int main(void) = 0;
 
 public:
-    app(const std::string&, const std::string&);
+    app(std::string, std::string);
     virtual ~app(void);
 
     int run(int, char* const*);

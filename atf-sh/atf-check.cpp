@@ -98,10 +98,10 @@ struct output_check {
     std::string value;
 
     output_check(const output_check_t& p_type, const bool p_negated,
-                 const std::string& p_value) :
+                 std::string p_value) :
         type(p_type),
         negated(p_negated),
-        value(p_value)
+        value(std::move(p_value))
     {
     }
 };

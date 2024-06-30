@@ -38,6 +38,7 @@ extern "C" {
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <utility>
 
 extern "C" {
 #include "atf-c/defs.h"
@@ -86,11 +87,11 @@ impl::usage_error::what()
 // ------------------------------------------------------------------------
 
 impl::option::option(char ch,
-                     const std::string& a,
-                     const std::string& desc) :
+                     std::string a,
+                     std::string desc) :
     m_character(ch),
-    m_argument(a),
-    m_description(desc)
+    m_argument(std::move(a)),
+    m_description(std::move(desc))
 {
 }
 
@@ -101,13 +102,13 @@ impl::option::operator<(const impl::option& o)
     return m_character < o.m_character;
 }
 
-impl::app::app(const std::string& description,
-               const std::string& manpage) :
+impl::app::app(std::string description,
+               std::string manpage) :
     m_argc(-1),
     m_argv(nullptr),
     m_prog_name(nullptr),
-    m_description(description),
-    m_manpage(manpage)
+    m_description(std::move(description)),
+    m_manpage(std::move(manpage))
 {
 }
 
