@@ -57,7 +57,7 @@ do_exec(const atf::tests::tc* tc, const char* helper_name)
 {
     std::vector< std::string > argv;
     argv.push_back(get_process_helpers_path(*tc, false).str());
-    argv.push_back(helper_name);
+    argv.emplace_back(helper_name);
     std::cout << "Executing " << argv[0] << " " << argv[1] << "\n";
 
     atf::process::argv_array argva(argv);
@@ -70,8 +70,8 @@ do_exec(const atf::tests::tc* tc, const char* helper_name, const char *carg2)
 {
     std::vector< std::string > argv;
     argv.push_back(get_process_helpers_path(*tc, false).str());
-    argv.push_back(helper_name);
-    argv.push_back(carg2);
+    argv.emplace_back(helper_name);
+    argv.emplace_back(carg2);
     std::cout << "Executing " << argv[0] << " " << argv[1] << " "
               << argv[2] << "\n";
 
@@ -369,7 +369,7 @@ ATF_TEST_CASE_HEAD(exec_unknown)
 ATF_TEST_CASE_BODY(exec_unknown)
 {
     std::vector< std::string > argv;
-    argv.push_back("/foo/bar/non-existent");
+    argv.emplace_back("/foo/bar/non-existent");
 
     atf::process::argv_array argva(argv);
     std::unique_ptr< atf::check::check_result > r = atf::check::exec(argva);

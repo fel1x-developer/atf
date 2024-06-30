@@ -259,8 +259,8 @@ ATF_TEST_CASE_WITHOUT_HEAD(grep_collection__vector);
 ATF_TEST_CASE_BODY(grep_collection__vector)
 {
     std::vector< std::string > strings;
-    strings.push_back("First");
-    strings.push_back("Second");
+    strings.emplace_back("First");
+    strings.emplace_back("Second");
 
     ATF_REQUIRE( atf::utils::grep_collection("irs", strings));
     ATF_REQUIRE( atf::utils::grep_collection("cond", strings));

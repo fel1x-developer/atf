@@ -74,27 +74,27 @@ ATF_TEST_CASE_BODY(join)
         ATF_REQUIRE_EQ(str, "");
 
         words.clear();
-        words.push_back("");
+        words.emplace_back("");
         str = join(words, ",");
         ATF_REQUIRE_EQ(str, "");
 
         words.clear();
-        words.push_back("");
-        words.push_back("");
+        words.emplace_back("");
+        words.emplace_back("");
         str = join(words, ",");
         ATF_REQUIRE_EQ(str, ",");
 
         words.clear();
-        words.push_back("foo");
-        words.push_back("");
-        words.push_back("baz");
+        words.emplace_back("foo");
+        words.emplace_back("");
+        words.emplace_back("baz");
         str = join(words, ",");
         ATF_REQUIRE_EQ(str, "foo,,baz");
 
         words.clear();
-        words.push_back("foo");
-        words.push_back("bar");
-        words.push_back("baz");
+        words.emplace_back("foo");
+        words.emplace_back("bar");
+        words.emplace_back("baz");
         str = join(words, ",");
         ATF_REQUIRE_EQ(str, "foo,bar,baz");
     }

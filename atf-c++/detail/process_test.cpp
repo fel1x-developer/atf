@@ -62,7 +62,7 @@ exec_process_helpers(const atf::tests::tc& tc, const char* helper_name)
 
     std::vector< std::string > argv;
     argv.push_back(get_process_helpers_path(tc, true).leaf_name());
-    argv.push_back(helper_name);
+    argv.emplace_back(helper_name);
 
     return exec(get_process_helpers_path(tc, true),
                 atf::process::argv_array(argv),
@@ -125,7 +125,7 @@ ATF_TEST_CASE_BODY(argv_array_init_col)
 
     {
         std::vector< std::string > col;
-        col.push_back("arg0");
+        col.emplace_back("arg0");
         atf::process::argv_array argv(col);
 
         ATF_REQUIRE_EQ(argv.size(), 1);
@@ -134,9 +134,9 @@ ATF_TEST_CASE_BODY(argv_array_init_col)
 
     {
         std::vector< std::string > col;
-        col.push_back("arg0");
-        col.push_back("arg1");
-        col.push_back("arg2");
+        col.emplace_back("arg0");
+        col.emplace_back("arg1");
+        col.emplace_back("arg2");
         atf::process::argv_array argv(col);
 
         ATF_REQUIRE_EQ(argv.size(), 3);
@@ -271,7 +271,7 @@ ATF_TEST_CASE_BODY(argv_array_exec_argv)
 
     {
         std::vector< std::string > col;
-        col.push_back("arg0");
+        col.emplace_back("arg0");
         argv_array argv(col);
         const char* const* eargv = argv.exec_argv();
         ATF_REQUIRE_EQ(array_size(eargv), 1);
@@ -290,9 +290,9 @@ ATF_TEST_CASE_BODY(argv_array_iter)
     using atf::process::argv_array;
 
     std::vector< std::string > vector;
-    vector.push_back("arg0");
-    vector.push_back("arg1");
-    vector.push_back("arg2");
+    vector.emplace_back("arg0");
+    vector.emplace_back("arg1");
+    vector.emplace_back("arg2");
 
     argv_array argv(vector);
     ATF_REQUIRE_EQ(argv.size(), 3);

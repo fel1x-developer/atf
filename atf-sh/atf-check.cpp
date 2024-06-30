@@ -903,16 +903,16 @@ atf_check::main()
     int status = EXIT_FAILURE;
 
     if (m_status_checks.empty())
-        m_status_checks.push_back(status_check(sc_exit, false, EXIT_SUCCESS));
+        m_status_checks.emplace_back(sc_exit, false, EXIT_SUCCESS);
     else if (m_status_checks.size() > 1) {
         // TODO: Remove this restriction.
         throw atf::application::usage_error("Cannot specify -s more than once");
     }
 
     if (m_stdout_checks.empty())
-        m_stdout_checks.push_back(output_check(oc_empty, false, ""));
+        m_stdout_checks.emplace_back(oc_empty, false, "");
     if (m_stderr_checks.empty())
-        m_stderr_checks.push_back(output_check(oc_empty, false, ""));
+        m_stderr_checks.emplace_back(oc_empty, false, "");
 
     do {
         std::unique_ptr< atf::check::check_result > r =

@@ -54,8 +54,8 @@ build_check_cxx_o(const char* sfile)
 {
     std::vector< std::string > optargs;
     optargs.push_back("-I" + atf::env::get("ATF_INCLUDEDIR", ATF_INCLUDEDIR));
-    optargs.push_back("-Wall");
-    optargs.push_back("-Werror");
+    optargs.emplace_back("-Wall");
+    optargs.emplace_back("-Werror");
 
     return atf::check::build_cxx_o(sfile, "test.o",
                                    atf::process::argv_array(optargs));
