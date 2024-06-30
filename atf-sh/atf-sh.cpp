@@ -110,27 +110,27 @@ class atf_sh : public atf::application::app {
 
     atf::fs::path m_shell;
 
-    options_set specific_options(void) const;
+    options_set specific_options() const;
     void process_option(int, const char*);
 
 public:
-    atf_sh(void);
+    atf_sh();
 
-    int main(void);
+    int main();
 };
 
 const char* atf_sh::m_description =
     "atf-sh is a shell interpreter that extends the functionality of the "
     "system sh(1) with the atf-sh library.";
 
-atf_sh::atf_sh(void) :
+atf_sh::atf_sh() :
     app(m_description, "atf-sh(1)"),
     m_shell(atf::fs::path(atf::env::get("ATF_SHELL", ATF_SHELL)))
 {
 }
 
 atf_sh::options_set
-atf_sh::specific_options(void)
+atf_sh::specific_options()
     const
 {
     using atf::application::option;
@@ -157,7 +157,7 @@ atf_sh::process_option(int ch, const char* arg)
 }
 
 int
-atf_sh::main(void)
+atf_sh::main()
 {
     if (m_argc < 1)
         throw atf::application::usage_error("No test program provided");

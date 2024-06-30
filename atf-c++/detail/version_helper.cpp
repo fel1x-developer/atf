@@ -34,7 +34,7 @@
 #include <iostream>
 
 int
-main(void)
+main()
 {
     std::cout << PACKAGE_VERSION << "\n";
     return EXIT_SUCCESS;

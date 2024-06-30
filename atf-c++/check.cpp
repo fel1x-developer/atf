@@ -48,20 +48,20 @@ impl::check_result::check_result(const atf_check_result_t* result)
     std::memcpy(&m_result, result, sizeof(m_result));
 }
 
-impl::check_result::~check_result(void)
+impl::check_result::~check_result()
 {
     atf_check_result_fini(&m_result);
 }
 
 bool
-impl::check_result::exited(void)
+impl::check_result::exited()
     const
 {
     return atf_check_result_exited(&m_result);
 }
 
 int
-impl::check_result::exitcode(void)
+impl::check_result::exitcode()
     const
 {
     PRE(exited());
@@ -69,14 +69,14 @@ impl::check_result::exitcode(void)
 }
 
 bool
-impl::check_result::signaled(void)
+impl::check_result::signaled()
     const
 {
     return atf_check_result_signaled(&m_result);
 }
 
 int
-impl::check_result::termsig(void)
+impl::check_result::termsig()
     const
 {
     PRE(signaled());
@@ -84,13 +84,13 @@ impl::check_result::termsig(void)
 }
 
 const std::string
-impl::check_result::stdout_path(void) const
+impl::check_result::stdout_path() const
 {
     return atf_check_result_stdout(&m_result);
 }
 
 const std::string
-impl::check_result::stderr_path(void) const
+impl::check_result::stderr_path() const
 {
     return atf_check_result_stderr(&m_result);
 }

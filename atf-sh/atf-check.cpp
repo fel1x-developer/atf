@@ -130,7 +130,7 @@ public:
         m_path.reset(new atf::fs::path(buf.data()));
     }
 
-    ~temp_file(void)
+    ~temp_file()
     {
         close();
         try {
@@ -141,7 +141,7 @@ public:
     }
 
     const atf::fs::path&
-    get_path(void) const
+    get_path() const
     {
         return *m_path;
     }
@@ -154,7 +154,7 @@ public:
     }
 
     void
-    close(void)
+    close()
     {
         if (m_fd != -1) {
             flush();
@@ -167,7 +167,7 @@ public:
 } // anonymous namespace
 
 static useconds_t
-get_monotonic_useconds(void)
+get_monotonic_useconds()
 {
     struct timespec ts;
     useconds_t res;
@@ -796,14 +796,14 @@ class atf_check : public atf::application::app {
     bool run_output_checks(const atf::check::check_result&,
                            const std::string&) const;
 
-    std::string specific_args(void) const;
-    options_set specific_options(void) const;
+    std::string specific_args() const;
+    options_set specific_options() const;
     void process_option(int, const char*);
     void process_option_s(const std::string&);
 
 public:
-    atf_check(void);
-    int main(void);
+    atf_check();
+    int main();
 };
 
 } // anonymous namespace
@@ -811,7 +811,7 @@ public:
 const char* atf_check::m_description =
     "atf-check executes given command and analyzes its results.";
 
-atf_check::atf_check(void) :
+atf_check::atf_check() :
     app(m_description, "atf-check(1)"),
     m_rflag(false),
     m_xflag(false)
@@ -836,14 +836,14 @@ atf_check::run_output_checks(const atf::check::check_result& r,
 }
 
 std::string
-atf_check::specific_args(void)
+atf_check::specific_args()
     const
 {
     return "<command>";
 }
 
 atf_check::options_set
-atf_check::specific_options(void)
+atf_check::specific_options()
     const
 {
     using atf::application::option;
@@ -895,7 +895,7 @@ atf_check::process_option(int ch, const char* arg)
 }
 
 int
-atf_check::main(void)
+atf_check::main()
 {
     if (m_argc < 1)
         throw atf::application::usage_error("No command specified");

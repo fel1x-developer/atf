@@ -230,7 +230,7 @@ errno_fail_stub(const int raised_errno)
 }
 
 static int
-errno_ok_stub(void)
+errno_ok_stub()
 {
     return 0;
 }

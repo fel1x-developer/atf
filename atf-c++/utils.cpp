@@ -63,7 +63,7 @@ atf::utils::file_exists(const std::string& path)
 }
 
 pid_t
-atf::utils::fork(void)
+atf::utils::fork()
 {
     std::cout.flush();
     std::cerr.flush();
@@ -71,7 +71,7 @@ atf::utils::fork(void)
 }
 
 void
-atf::utils::reset_resultsfile(void)
+atf::utils::reset_resultsfile()
 {
 
     atf_utils_reset_resultsfile();

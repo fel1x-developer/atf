@@ -126,48 +126,48 @@ impl::path::path(const atf_fs_path_t *p)
         throw_atf_error(err);
 }
 
-impl::path::~path(void)
+impl::path::~path()
 {
     atf_fs_path_fini(&m_path);
 }
 
 const char*
-impl::path::c_str(void)
+impl::path::c_str()
     const
 {
     return atf_fs_path_cstring(&m_path);
 }
 
 const atf_fs_path_t*
-impl::path::c_path(void)
+impl::path::c_path()
     const
 {
     return &m_path;
 }
 
 std::string
-impl::path::str(void)
+impl::path::str()
     const
 {
     return c_str();
 }
 
 bool
-impl::path::is_absolute(void)
+impl::path::is_absolute()
     const
 {
     return atf_fs_path_is_absolute(&m_path);
 }
 
 bool
-impl::path::is_root(void)
+impl::path::is_root()
     const
 {
     return atf_fs_path_is_root(&m_path);
 }
 
 impl::path
-impl::path::branch_path(void)
+impl::path::branch_path()
     const
 {
     atf_fs_path_t bp;
@@ -183,7 +183,7 @@ impl::path::branch_path(void)
 }
 
 std::string
-impl::path::leaf_name(void)
+impl::path::leaf_name()
     const
 {
     atf_dynstr_t ln;
@@ -199,7 +199,7 @@ impl::path::leaf_name(void)
 }
 
 impl::path
-impl::path::to_absolute(void)
+impl::path::to_absolute()
     const
 {
     atf_fs_path_t pa;
@@ -306,104 +306,104 @@ impl::file_info::file_info(const file_info& fi)
     atf_fs_stat_copy(&m_stat, &fi.m_stat);
 }
 
-impl::file_info::~file_info(void)
+impl::file_info::~file_info()
 {
     atf_fs_stat_fini(&m_stat);
 }
 
 dev_t
-impl::file_info::get_device(void)
+impl::file_info::get_device()
     const
 {
     return atf_fs_stat_get_device(&m_stat);
 }
 
 ino_t
-impl::file_info::get_inode(void)
+impl::file_info::get_inode()
     const
 {
     return atf_fs_stat_get_inode(&m_stat);
 }
 
 mode_t
-impl::file_info::get_mode(void)
+impl::file_info::get_mode()
     const
 {
     return atf_fs_stat_get_mode(&m_stat);
 }
 
 off_t
-impl::file_info::get_size(void)
+impl::file_info::get_size()
     const
 {
     return atf_fs_stat_get_size(&m_stat);
 }
 
 int
-impl::file_info::get_type(void)
+impl::file_info::get_type()
     const
 {
     return atf_fs_stat_get_type(&m_stat);
 }
 
 bool
-impl::file_info::is_owner_readable(void)
+impl::file_info::is_owner_readable()
     const
 {
     return atf_fs_stat_is_owner_readable(&m_stat);
 }
 
 bool
-impl::file_info::is_owner_writable(void)
+impl::file_info::is_owner_writable()
     const
 {
     return atf_fs_stat_is_owner_writable(&m_stat);
 }
 
 bool
-impl::file_info::is_owner_executable(void)
+impl::file_info::is_owner_executable()
     const
 {
     return atf_fs_stat_is_owner_executable(&m_stat);
 }
 
 bool
-impl::file_info::is_group_readable(void)
+impl::file_info::is_group_readable()
     const
 {
     return atf_fs_stat_is_group_readable(&m_stat);
 }
 
 bool
-impl::file_info::is_group_writable(void)
+impl::file_info::is_group_writable()
     const
 {
     return atf_fs_stat_is_group_writable(&m_stat);
 }
 
 bool
-impl::file_info::is_group_executable(void)
+impl::file_info::is_group_executable()
     const
 {
     return atf_fs_stat_is_group_executable(&m_stat);
 }
 
 bool
-impl::file_info::is_other_readable(void)
+impl::file_info::is_other_readable()
     const
 {
     return atf_fs_stat_is_other_readable(&m_stat);
 }
 
 bool
-impl::file_info::is_other_writable(void)
+impl::file_info::is_other_writable()
     const
 {
     return atf_fs_stat_is_other_writable(&m_stat);
 }
 
 bool
-impl::file_info::is_other_executable(void)
+impl::file_info::is_other_executable()
     const
 {
     return atf_fs_stat_is_other_executable(&m_stat);
@@ -432,7 +432,7 @@ impl::directory::directory(const path& p)
 }
 
 std::set< std::string >
-impl::directory::names(void)
+impl::directory::names()
     const
 {
     std::set< std::string > ns;

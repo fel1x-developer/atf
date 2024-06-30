@@ -52,13 +52,13 @@ atf::system_error::system_error(const std::string& who,
 {
 }
 
-atf::system_error::~system_error(void)
+atf::system_error::~system_error()
     throw()
 {
 }
 
 int
-atf::system_error::code(void)
+atf::system_error::code()
     const
     throw()
 {
@@ -66,7 +66,7 @@ atf::system_error::code(void)
 }
 
 const char*
-atf::system_error::what(void)
+atf::system_error::what()
     const
     throw()
 {

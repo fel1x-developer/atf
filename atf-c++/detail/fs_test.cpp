@@ -44,7 +44,7 @@ extern "C" {
 
 static
 void
-create_files(void)
+create_files()
 {
     ::mkdir("files", 0755);
     ::mkdir("files/dir", 0755);

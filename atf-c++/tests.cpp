@@ -97,7 +97,7 @@ detail::atf_tp_writer::start_tc(const std::string& ident)
 }
 
 void
-detail::atf_tp_writer::end_tc(void)
+detail::atf_tp_writer::end_tc()
 {
     if (m_is_first)
         m_is_first = false;
@@ -193,7 +193,7 @@ impl::tc::tc(const std::string& ident, const bool has_cleanup) :
 {
 }
 
-impl::tc::~tc(void)
+impl::tc::~tc()
 {
     cwraps.erase(&pimpl->m_tc);
     wraps.erase(&pimpl->m_tc);
@@ -262,7 +262,7 @@ impl::tc::get_md_var(const std::string& var)
 }
 
 const impl::vars_map
-impl::tc::get_md_vars(void)
+impl::tc::get_md_vars()
     const
 {
     vars_map vars;
@@ -298,7 +298,7 @@ impl::tc::run(const std::string& resfile)
 }
 
 void
-impl::tc::run_cleanup(void)
+impl::tc::run_cleanup()
     const
 {
     atf_error_t err = atf_tc_cleanup(&pimpl->m_tc);
@@ -307,12 +307,12 @@ impl::tc::run_cleanup(void)
 }
 
 void
-impl::tc::head(void)
+impl::tc::head()
 {
 }
 
 void
-impl::tc::cleanup(void)
+impl::tc::cleanup()
     const
 {
 }
@@ -325,7 +325,7 @@ impl::tc::require_prog(const std::string& prog)
 }
 
 void
-impl::tc::pass(void)
+impl::tc::pass()
 {
     atf_tc_pass();
 }
@@ -363,7 +363,7 @@ impl::tc::require_errno(const char* file, const int line, const int exp_errno,
 }
 
 void
-impl::tc::expect_pass(void)
+impl::tc::expect_pass()
 {
     atf_tc_expect_pass();
 }

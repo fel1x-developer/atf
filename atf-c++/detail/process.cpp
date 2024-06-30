@@ -77,7 +77,7 @@ argv_to_collection(const char* const* argv)
 // The "argv_array" type.
 // ------------------------------------------------------------------------
 
-impl::argv_array::argv_array(void) :
+impl::argv_array::argv_array() :
     m_exec_argv(collection_to_argv(m_args))
 {
 }
@@ -112,20 +112,20 @@ impl::argv_array::argv_array(const argv_array& a) :
 }
 
 void
-impl::argv_array::ctor_init_exec_argv(void)
+impl::argv_array::ctor_init_exec_argv()
 {
     m_exec_argv = collection_to_argv(m_args);
 }
 
 const char* const*
-impl::argv_array::exec_argv(void)
+impl::argv_array::exec_argv()
     const
 {
     return m_exec_argv.data();
 }
 
 impl::argv_array::size_type
-impl::argv_array::size(void)
+impl::argv_array::size()
     const
 {
     return m_args.size();
@@ -139,14 +139,14 @@ impl::argv_array::operator[](int idx)
 }
 
 impl::argv_array::const_iterator
-impl::argv_array::begin(void)
+impl::argv_array::begin()
     const
 {
     return m_args.begin();
 }
 
 impl::argv_array::const_iterator
-impl::argv_array::end(void)
+impl::argv_array::end()
     const
 {
     return m_args.end();
@@ -166,26 +166,26 @@ impl::argv_array::operator=(const argv_array& a)
 // The "stream" types.
 // ------------------------------------------------------------------------
 
-impl::basic_stream::basic_stream(void) :
+impl::basic_stream::basic_stream() :
     m_inited(false)
 {
 }
 
-impl::basic_stream::~basic_stream(void)
+impl::basic_stream::~basic_stream()
 {
     if (m_inited)
         atf_process_stream_fini(&m_sb);
 }
 
 const atf_process_stream_t*
-impl::basic_stream::get_sb(void)
+impl::basic_stream::get_sb()
     const
 {
     INV(m_inited);
     return &m_sb;
 }
 
-impl::stream_capture::stream_capture(void)
+impl::stream_capture::stream_capture()
 {
     atf_error_t err = atf_process_stream_init_capture(&m_sb);
     if (atf_is_error(err))
@@ -201,7 +201,7 @@ impl::stream_connect::stream_connect(const int src_fd, const int tgt_fd)
     m_inited = true;
 }
 
-impl::stream_inherit::stream_inherit(void)
+impl::stream_inherit::stream_inherit()
 {
     atf_error_t err = atf_process_stream_init_inherit(&m_sb);
     if (atf_is_error(err))
@@ -234,41 +234,41 @@ impl::status::status(atf_process_status_t& s) :
 {
 }
 
-impl::status::~status(void)
+impl::status::~status()
 {
     atf_process_status_fini(&m_status);
 }
 
 bool
-impl::status::exited(void)
+impl::status::exited()
     const
 {
     return atf_process_status_exited(&m_status);
 }
 
 int
-impl::status::exitstatus(void)
+impl::status::exitstatus()
     const
 {
     return atf_process_status_exitstatus(&m_status);
 }
 
 bool
-impl::status::signaled(void)
+impl::status::signaled()
     const
 {
     return atf_process_status_signaled(&m_status);
 }
 
 int
-impl::status::termsig(void)
+impl::status::termsig()
     const
 {
     return atf_process_status_termsig(&m_status);
 }
 
 bool
-impl::status::coredump(void)
+impl::status::coredump()
     const
 {
     return atf_process_status_coredump(&m_status);
@@ -284,7 +284,7 @@ impl::child::child(atf_process_child_t& c) :
 {
 }
 
-impl::child::~child(void)
+impl::child::~child()
 {
     if (!m_waited) {
         ::kill(atf_process_child_pid(&m_child), SIGTERM);
@@ -297,7 +297,7 @@ impl::child::~child(void)
 }
 
 impl::status
-impl::child::wait(void)
+impl::child::wait()
 {
     atf_process_status_t s;
 
@@ -310,20 +310,20 @@ impl::child::wait(void)
 }
 
 pid_t
-impl::child::pid(void)
+impl::child::pid()
     const
 {
     return atf_process_child_pid(&m_child);
 }
 
 int
-impl::child::stdout_fd(void)
+impl::child::stdout_fd()
 {
     return atf_process_child_stdout(&m_child);
 }
 
 int
-impl::child::stderr_fd(void)
+impl::child::stderr_fd()
 {
     return atf_process_child_stderr(&m_child);
 }
@@ -333,7 +333,7 @@ impl::child::stderr_fd(void)
 // ------------------------------------------------------------------------
 
 void
-detail::flush_streams(void)
+detail::flush_streams()
 {
     // TODO: This should only be executed when inheriting the stdout or
     // stderr file descriptors.  However, the flushing is specific to the

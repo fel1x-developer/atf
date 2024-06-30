@@ -69,13 +69,13 @@ impl::usage_error::usage_error(const char *fmt, ...)
     va_end(ap);
 }
 
-impl::usage_error::~usage_error(void)
+impl::usage_error::~usage_error()
     throw()
 {
 }
 
 const char*
-impl::usage_error::what(void)
+impl::usage_error::what()
     const throw()
 {
     return m_text;
@@ -111,31 +111,31 @@ impl::app::app(const std::string& description,
 {
 }
 
-impl::app::~app(void)
+impl::app::~app()
 {
 }
 
 bool
-impl::app::inited(void)
+impl::app::inited()
 {
     return m_argc != -1;
 }
 
 impl::app::options_set
-impl::app::options(void)
+impl::app::options()
 {
     return specific_options();
 }
 
 std::string
-impl::app::specific_args(void)
+impl::app::specific_args()
     const
 {
     return "";
 }
 
 impl::app::options_set
-impl::app::specific_options(void)
+impl::app::specific_options()
     const
 {
     return options_set();
@@ -148,7 +148,7 @@ impl::app::process_option(int ch ATF_DEFS_ATTRIBUTE_UNUSED,
 }
 
 void
-impl::app::process_options(void)
+impl::app::process_options()
 {
     PRE(inited());
 
