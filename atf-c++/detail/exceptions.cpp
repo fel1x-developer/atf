@@ -70,7 +70,7 @@ atf::system_error::what()
     noexcept
 {
     try {
-        if (m_message.length() == 0) {
+        if (m_message.empty()) {
             m_message = std::string(std::runtime_error::what()) + ": ";
             m_message += ::strerror(m_sys_err);
         }
