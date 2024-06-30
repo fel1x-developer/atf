@@ -593,7 +593,7 @@ ATF_TEST_CASE_BODY(require_throw)
             std::cout << "Checking that message contains '" << t->msg
                       << "'\n";
             std::string exp_result = std::string("^failed: .*") + t->msg;
-            ATF_REQUIRE(atf::utils::grep_file(exp_result.c_str(), "result"));
+            ATF_REQUIRE(atf::utils::grep_file(exp_result, "result"));
             ATF_REQUIRE(!atf::fs::exists(after));
         }
 
@@ -645,7 +645,7 @@ ATF_TEST_CASE_BODY(require_throw_re)
             std::cout << "Checking that message contains '" << t->msg
                       << "'\n";
             std::string exp_result = std::string("^failed: .*") + t->msg;
-            ATF_REQUIRE(atf::utils::grep_file(exp_result.c_str(), "result"));
+            ATF_REQUIRE(atf::utils::grep_file(exp_result, "result"));
             ATF_REQUIRE(!atf::fs::exists(after));
         }
 
@@ -695,7 +695,7 @@ ATF_TEST_CASE_BODY(check_errno)
 
             std::string exp_result = "macros_test.cpp:[0-9]+: " +
                 std::string(t->msg) + "$";
-            ATF_REQUIRE(atf::utils::grep_file(exp_result.c_str(), "stderr"));
+            ATF_REQUIRE(atf::utils::grep_file(exp_result, "stderr"));
         }
 
         atf::fs::remove(before);
@@ -740,7 +740,7 @@ ATF_TEST_CASE_BODY(require_errno)
         } else {
             std::string exp_result = "^failed: .*macros_test.cpp:[0-9]+: " +
                 std::string(t->msg) + "$";
-            ATF_REQUIRE(atf::utils::grep_file(exp_result.c_str(), "result"));
+            ATF_REQUIRE(atf::utils::grep_file(exp_result, "result"));
 
             ATF_REQUIRE(!atf::fs::exists(after));
         }
