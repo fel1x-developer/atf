@@ -51,7 +51,7 @@ fix_plain_name(const char *filename)
     if (filepath.branch_path().str() == ".")
         return std::string("./") + filename;
     else
-        return std::string(filename);
+        return {filename};
 }
 
 static

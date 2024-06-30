@@ -139,7 +139,7 @@ impl::app::options_set
 impl::app::specific_options()
     const
 {
-    return options_set();
+    return {};
 }
 
 void
