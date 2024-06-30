@@ -485,7 +485,7 @@ list_tcs(const tc_vector& tcs)
 }
 
 impl::tc*
-find_tc(tc_vector tcs, const std::string& name)
+find_tc(const tc_vector& tcs, const std::string& name)
 {
     std::vector< std::string > ids;
     for (auto tc : tcs) {
