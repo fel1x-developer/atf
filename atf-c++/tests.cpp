@@ -219,8 +219,8 @@ impl::tc::init(const vars_map& config)
     wraps[&pimpl->m_tc] = this;
     cwraps[&pimpl->m_tc] = this;
 
-    err = atf_tc_init(&pimpl->m_tc, pimpl->m_ident.c_str(), pimpl->wrap_head,
-        pimpl->wrap_body, pimpl->m_has_cleanup ? pimpl->wrap_cleanup : nullptr,
+    err = atf_tc_init(&pimpl->m_tc, pimpl->m_ident.c_str(), atf::tests::tc_impl::wrap_head,
+        atf::tests::tc_impl::wrap_body, pimpl->m_has_cleanup ? atf::tests::tc_impl::wrap_cleanup : nullptr,
         array.data());
     if (atf_is_error(err))
         throw_atf_error(err);

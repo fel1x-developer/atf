@@ -60,8 +60,7 @@ print_indented(const std::string& str)
 // at the moment will be bogus if there are some.
 static
 void
-check_equal(const atf::tests::tc& tc, const std::string& str,
-            const std::string& exp)
+check_equal(const std::string& str, const std::string& exp)
 {
     if (str != exp) {
         std::cout << "String equality check failed.\n"
@@ -70,7 +69,7 @@ check_equal(const atf::tests::tc& tc, const std::string& str,
         print_indented(str);
         std::cout << "EXPECTED:\n";
         print_indented(exp);
-        tc.fail("Constructed string differs from the expected one");
+        atf::tests::tc::fail("Constructed string differs from the expected one");
     }
 }
 
@@ -89,7 +88,7 @@ ATF_TEST_CASE_BODY(atf_tp_writer)
     ss.str("")
 
 #define CHECK \
-    check_equal(*this, ss.str(), expss.str())
+    check_equal(ss.str(), expss.str())
 
     {
         RESET;
