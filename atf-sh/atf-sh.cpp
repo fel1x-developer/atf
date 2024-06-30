@@ -43,7 +43,7 @@ extern "C" {
 
 namespace {
 
-static
+
 std::string
 fix_plain_name(const char *filename)
 {
@@ -54,7 +54,7 @@ fix_plain_name(const char *filename)
         return {filename};
 }
 
-static
+
 std::string*
 construct_script(const char* filename)
 {
@@ -74,7 +74,7 @@ construct_script(const char* filename)
     return command;
 }
 
-static
+
 const char**
 construct_argv(const std::string& shell, const int interpreter_argc,
                const char* const* interpreter_argv)

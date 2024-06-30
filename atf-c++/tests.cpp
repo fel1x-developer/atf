@@ -408,7 +408,7 @@ typedef std::vector< impl::tc * > tc_vector;
 
 enum tc_part { BODY, CLEANUP };
 
-static void
+void
 parse_vflag(const std::string& str, atf::tests::vars_map& vars)
 {
     if (str.empty())
@@ -426,7 +426,7 @@ parse_vflag(const std::string& str, atf::tests::vars_map& vars)
     }
 }
 
-static atf::fs::path
+atf::fs::path
 handle_srcdir(const char* argv0, const std::string& srcdir_arg)
 {
     atf::fs::path srcdir(".");
@@ -448,7 +448,7 @@ handle_srcdir(const char* argv0, const std::string& srcdir_arg)
     return srcdir;
 }
 
-static void
+void
 init_tcs(void (*add_tcs)(tc_vector&), tc_vector& tcs,
          const atf::tests::vars_map& vars)
 {
@@ -458,7 +458,7 @@ init_tcs(void (*add_tcs)(tc_vector&), tc_vector& tcs,
     }
 }
 
-static int
+int
 list_tcs(const tc_vector& tcs)
 {
     detail::atf_tp_writer writer(std::cout);
@@ -484,7 +484,7 @@ list_tcs(const tc_vector& tcs)
     return EXIT_SUCCESS;
 }
 
-static impl::tc*
+impl::tc*
 find_tc(tc_vector tcs, const std::string& name)
 {
     std::vector< std::string > ids;
@@ -495,7 +495,7 @@ find_tc(tc_vector tcs, const std::string& name)
     throw usage_error("Unknown test case `%s'", name.c_str());
 }
 
-static std::pair< std::string, tc_part >
+std::pair< std::string, tc_part >
 process_tcarg(const std::string& tcarg)
 {
     const std::string::size_type pos = tcarg.find(':');
@@ -515,7 +515,7 @@ process_tcarg(const std::string& tcarg)
     }
 }
 
-static int
+int
 run_tc(tc_vector& tcs, const std::string& tcarg, const atf::fs::path& resfile)
 {
     const std::pair< std::string, tc_part > fields = process_tcarg(tcarg);
@@ -545,7 +545,7 @@ run_tc(tc_vector& tcs, const std::string& tcarg, const atf::fs::path& resfile)
     return EXIT_SUCCESS;
 }
 
-static int
+int
 safe_main(int argc, char** argv, void (*add_tcs)(tc_vector&))
 {
     const char* argv0 = argv[0];
