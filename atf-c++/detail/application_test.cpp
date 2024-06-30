@@ -35,7 +35,7 @@ class getopt_app : public atf::application::app {
 public:
     getopt_app() : app("description", "manpage") {}
 
-    int main()
+    int main() override
     {
         // Provide an option that is unknown to the application driver and
         // one that is, together with an argument that would be swallowed by

@@ -110,13 +110,13 @@ class atf_sh : public atf::application::app {
 
     atf::fs::path m_shell;
 
-    options_set specific_options() const;
-    void process_option(int, const char*);
+    options_set specific_options() const override;
+    void process_option(int, const char*) override;
 
 public:
     atf_sh();
 
-    int main();
+    int main() override;
 };
 
 const char* atf_sh::m_description =

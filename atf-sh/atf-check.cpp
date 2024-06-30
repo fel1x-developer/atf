@@ -130,7 +130,7 @@ public:
         m_path.reset(new atf::fs::path(buf.data()));
     }
 
-    ~temp_file()
+    ~temp_file() override
     {
         close();
         try {
@@ -795,14 +795,14 @@ class atf_check : public atf::application::app {
     bool run_output_checks(const atf::check::check_result&,
                            const std::string&) const;
 
-    std::string specific_args() const;
-    options_set specific_options() const;
-    void process_option(int, const char*);
+    std::string specific_args() const override;
+    options_set specific_options() const override;
+    void process_option(int, const char*) override;
     void process_option_s(const std::string&);
 
 public:
     atf_check();
-    int main();
+    int main() override;
 };
 
 } // anonymous namespace
