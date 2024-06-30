@@ -59,7 +59,7 @@ namespace impl = atf::application;
 // ------------------------------------------------------------------------
 
 impl::usage_error::usage_error(const char *fmt, ...)
-    throw() :
+    noexcept :
     std::runtime_error("usage_error; message unformatted")
 {
     va_list ap;
@@ -70,13 +70,13 @@ impl::usage_error::usage_error(const char *fmt, ...)
 }
 
 impl::usage_error::~usage_error()
-    throw()
+    noexcept
 {
 }
 
 const char*
 impl::usage_error::what()
-    const throw()
+    const noexcept
 {
     return m_text;
 }

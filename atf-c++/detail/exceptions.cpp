@@ -53,14 +53,14 @@ atf::system_error::system_error(const std::string& who,
 }
 
 atf::system_error::~system_error()
-    throw()
+    noexcept
 {
 }
 
 int
 atf::system_error::code()
     const
-    throw()
+    noexcept
 {
     return m_sys_err;
 }
@@ -68,7 +68,7 @@ atf::system_error::code()
 const char*
 atf::system_error::what()
     const
-    throw()
+    noexcept
 {
     try {
         if (m_message.length() == 0) {
