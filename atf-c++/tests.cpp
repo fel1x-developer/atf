@@ -319,7 +319,7 @@ impl::tc::cleanup()
 
 void
 impl::tc::require_prog(const std::string& prog)
-    const
+
 {
     atf_tc_require_prog(prog.c_str());
 }

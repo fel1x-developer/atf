@@ -80,7 +80,7 @@ protected:
     virtual void body(void) const = 0;
     virtual void cleanup(void) const;
 
-    void require_prog(const std::string&) const;
+    static void require_prog(const std::string&) ;
 
     friend struct tc_impl;
 
