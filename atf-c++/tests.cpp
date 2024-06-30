@@ -148,8 +148,8 @@ static std::map< const atf_tc_t*, const impl::tc* > cwraps;
 struct impl::tc_impl {
 private:
     // Non-copyable.
-    tc_impl(const tc_impl&);
-    tc_impl& operator=(const tc_impl&);
+    tc_impl(const tc_impl&) = delete;
+    tc_impl& operator=(const tc_impl&) = delete;
 
 public:
     std::string m_ident;
