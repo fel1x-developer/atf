@@ -147,7 +147,7 @@ public:
     }
 
     void
-    write(const std::string& text)
+    write(const std::string& text) const
     {
         if (::write(m_fd, text.c_str(), text.size()) == -1)
             throw atf::system_error("atf_check", "write(2) failed", errno);

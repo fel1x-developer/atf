@@ -73,7 +73,7 @@ class app {
     void process_options(void);
     void usage(std::ostream&);
 
-    bool inited(void);
+    bool inited(void) const;
 
 protected:
     typedef std::set< option > options_set;

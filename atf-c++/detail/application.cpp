@@ -115,7 +115,7 @@ impl::app::~app()
 = default;
 
 bool
-impl::app::inited()
+impl::app::inited() const
 {
     return m_argc != -1;
 }
