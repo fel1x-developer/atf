@@ -169,7 +169,7 @@ public:
 static useconds_t
 get_monotonic_useconds()
 {
-    struct timespec ts;
+    struct timespec ts{};
     useconds_t res;
     int rc;
 
@@ -783,8 +783,8 @@ class atf_check : public atf::application::app {
     bool m_rflag;
     bool m_xflag;
 
-    useconds_t m_timo;
-    useconds_t m_interval;
+    useconds_t m_timo{};
+    useconds_t m_interval{};
 
     std::vector< status_check > m_status_checks;
     std::vector< output_check > m_stdout_checks;

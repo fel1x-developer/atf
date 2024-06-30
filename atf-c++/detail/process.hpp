@@ -95,7 +95,7 @@ argv_array::argv_array(const C& c)
 
 class basic_stream {
 protected:
-    atf_process_stream_t m_sb;
+    atf_process_stream_t m_sb{};
     bool m_inited;
 
     const atf_process_stream_t* get_sb(void) const;

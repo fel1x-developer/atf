@@ -185,7 +185,7 @@ ATF_TEST_CASE_BODY(copy_file__empty)
 
     atf::utils::copy_file("src.txt", "dest.txt");
     ATF_REQUIRE(atf::utils::compare_file("dest.txt", ""));
-    struct stat sb;
+    struct stat sb{};
     ATF_REQUIRE(stat("dest.txt", &sb) != -1);
     ATF_REQUIRE_EQ(0520, sb.st_mode & 0xfff);
 }

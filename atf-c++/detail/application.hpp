@@ -39,7 +39,7 @@ namespace application {
 // ------------------------------------------------------------------------
 
 class usage_error : public std::runtime_error {
-    char m_text[4096];
+    char m_text[4096]{};
 
 public:
     usage_error(const char*, ...) throw();
@@ -81,7 +81,7 @@ protected:
     int m_argc;
     char* const* m_argv;
 
-    const char* m_argv0;
+    const char* m_argv0{};
     const char* m_prog_name;
     std::string m_description;
     std::string m_manpage;

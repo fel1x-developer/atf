@@ -153,7 +153,7 @@ private:
 
 public:
     std::string m_ident;
-    atf_tc_t m_tc;
+    atf_tc_t m_tc{};
     bool m_has_cleanup;
 
     tc_impl(std::string ident, const bool has_cleanup) :

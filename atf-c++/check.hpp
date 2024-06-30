@@ -62,7 +62,7 @@ class check_result {
     //!
     //! \brief Internal representation of a result.
     //!
-    atf_check_result_t m_result;
+    atf_check_result_t m_result{};
 
     //!
     //! \brief Constructs a results object and grabs ownership of the

@@ -68,7 +68,7 @@ class path {
     //!
     //! \brief Internal representation of a path.
     //!
-    atf_fs_path_t m_path;
+    atf_fs_path_t m_path{};
 
 public:
     //! \brief Constructs a new path from a user-provided string.
@@ -208,7 +208,7 @@ class directory;
 //! exists in the file system.
 //!
 class file_info {
-    atf_fs_stat_t m_stat;
+    atf_fs_stat_t m_stat{};
 
 public:
     //!
