@@ -111,7 +111,7 @@ class temp_file : public std::ostream {
     int m_fd;
 
 public:
-    temp_file(const char* pattern) :
+    explicit temp_file(const char* pattern) :
         std::ostream(nullptr),
         m_fd(-1)
     {
