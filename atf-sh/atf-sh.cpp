@@ -64,7 +64,7 @@ construct_script(const char* filename)
         "ATF_PKGDATADIR", ATF_PKGDATADIR);
     const std::string shell = atf::env::get("ATF_SHELL", ATF_SHELL);
 
-    std::string* command = new std::string();
+    auto* command = new std::string();
     command->reserve(512);
     (*command) += ("Atf_Check='" + libexecdir + "/atf-check' ; " +
                    "Atf_Shell='" + shell + "' ; " +

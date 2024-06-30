@@ -46,7 +46,7 @@ void
 print_col(const char* prefix, const C& c)
 {
     std::cout << prefix << ":";
-    for (typename C::const_iterator iter = c.begin(); iter != c.end();
+    for (auto iter = c.begin(); iter != c.end();
          iter++)
         std::cout << " '" << *iter << "'";
     std::cout << "\n";

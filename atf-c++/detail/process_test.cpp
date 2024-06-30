@@ -297,7 +297,7 @@ ATF_TEST_CASE_BODY(argv_array_iter)
     argv_array argv(vector);
     ATF_REQUIRE_EQ(argv.size(), 3);
     std::vector< std::string >::size_type pos = 0;
-    for (argv_array::const_iterator iter = argv.begin(); iter != argv.end();
+    for (auto iter = argv.begin(); iter != argv.end();
          iter++) {
         ATF_REQUIRE_EQ(*iter, vector[pos]);
         pos++;

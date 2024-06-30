@@ -164,7 +164,7 @@ public:
     static void
     wrap_head(atf_tc_t *tc)
     {
-        std::map< atf_tc_t*, impl::tc* >::iterator iter = wraps.find(tc);
+        auto iter = wraps.find(tc);
         INV(iter != wraps.end());
         (*iter).second->head();
     }
@@ -466,7 +466,7 @@ list_tcs(const tc_vector& tcs)
         const impl::vars_map vars = tc->get_md_vars();
 
         {
-            impl::vars_map::const_iterator iter2 = vars.find("ident");
+            auto iter2 = vars.find("ident");
             INV(iter2 != vars.end());
             writer.start_tc((*iter2).second);
         }

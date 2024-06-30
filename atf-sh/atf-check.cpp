@@ -667,7 +667,7 @@ run_status_checks(const std::vector< status_check >& checks,
 {
     bool ok = false;
 
-    for (std::vector< status_check >::const_iterator iter = checks.begin();
+    for (auto iter = checks.begin();
          !ok && iter != checks.end(); iter++) {
          ok |= run_status_check(*iter, result);
     }
