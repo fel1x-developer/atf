@@ -50,9 +50,8 @@ void
 print_indented(const std::string& str)
 {
     std::vector< std::string > ws = atf::text::split(str, "\n");
-    for (std::vector< std::string >::const_iterator iter = ws.begin();
-         iter != ws.end(); iter++)
-        std::cout << ">>" << *iter << "<<\n";
+    for (const auto & w : ws)
+        std::cout << ">>" << w << "<<\n";
 }
 
 // XXX Should this string handling and verbosity level be part of the

@@ -766,9 +766,8 @@ run_output_checks(const std::vector< output_check >& checks,
 {
     bool ok = true;
 
-    for (std::vector< output_check >::const_iterator iter = checks.begin();
-         iter != checks.end(); iter++) {
-         ok &= run_output_check(*iter, path, stdxxx);
+    for (const auto & check : checks) {
+         ok &= run_output_check(check, path, stdxxx);
     }
 
     return ok;

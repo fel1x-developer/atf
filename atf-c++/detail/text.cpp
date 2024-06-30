@@ -80,9 +80,8 @@ std::string
 impl::to_lower(const std::string& str)
 {
     std::string lc;
-    for (std::string::const_iterator iter = str.begin(); iter != str.end();
-         iter++)
-        lc += std::tolower(*iter);
+    for (char iter : str)
+        lc += std::tolower(iter);
     return lc;
 }
 

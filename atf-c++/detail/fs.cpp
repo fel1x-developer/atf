@@ -437,8 +437,8 @@ impl::directory::names()
 {
     std::set< std::string > ns;
 
-    for (const_iterator iter = begin(); iter != end(); iter++)
-        ns.insert((*iter).first);
+    for (const auto & iter : *this)
+        ns.insert(iter.first);
 
     return ns;
 }

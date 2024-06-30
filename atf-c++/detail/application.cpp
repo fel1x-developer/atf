@@ -159,10 +159,7 @@ impl::app::process_options()
     optstr += ':';
     {
         options_set opts = options();
-        for (options_set::const_iterator iter = opts.begin();
-             iter != opts.end(); iter++) {
-            const option& opt = (*iter);
-
+        for (const auto & opt : opts) {
             optstr += opt.m_character;
             if (!opt.m_argument.empty())
                 optstr += ':';

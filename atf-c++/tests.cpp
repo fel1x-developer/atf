@@ -209,10 +209,9 @@ impl::tc::init(const vars_map& config)
     std::vector< const char * > array;
     array.reserve((config.size() * 2) + 1);
 
-    for (vars_map::const_iterator iter = config.begin();
-         iter != config.end(); iter++) {
-         array.push_back((*iter).first.c_str());
-         array.push_back((*iter).second.c_str());
+    for (const auto & iter : config) {
+         array.push_back(iter.first.c_str());
+         array.push_back(iter.second.c_str());
     }
     array.push_back(nullptr);
 
@@ -453,9 +452,7 @@ init_tcs(void (*add_tcs)(tc_vector&), tc_vector& tcs,
          const atf::tests::vars_map& vars)
 {
     add_tcs(tcs);
-    for (tc_vector::iterator iter = tcs.begin(); iter != tcs.end(); iter++) {
-        impl::tc* tc = *iter;
-
+    for (auto tc : tcs) {
         tc->init(vars);
     }
 }
@@ -465,9 +462,8 @@ list_tcs(const tc_vector& tcs)
 {
     detail::atf_tp_writer writer(std::cout);
 
-    for (tc_vector::const_iterator iter = tcs.begin();
-         iter != tcs.end(); iter++) {
-        const impl::vars_map vars = (*iter)->get_md_vars();
+    for (auto tc : tcs) {
+        const impl::vars_map vars = tc->get_md_vars();
 
         {
             impl::vars_map::const_iterator iter2 = vars.find("ident");
@@ -475,11 +471,10 @@ list_tcs(const tc_vector& tcs)
             writer.start_tc((*iter2).second);
         }
 
-        for (impl::vars_map::const_iterator iter2 = vars.begin();
-             iter2 != vars.end(); iter2++) {
-            const std::string& key = (*iter2).first;
+        for (const auto & var : vars) {
+            const std::string& key = var.first;
             if (key != "ident")
-                writer.tc_meta_data(key, (*iter2).second);
+                writer.tc_meta_data(key, var.second);
         }
 
         writer.end_tc();
@@ -492,10 +487,7 @@ static impl::tc*
 find_tc(tc_vector tcs, const std::string& name)
 {
     std::vector< std::string > ids;
-    for (tc_vector::iterator iter = tcs.begin();
-         iter != tcs.end(); iter++) {
-        impl::tc* tc = *iter;
-
+    for (auto tc : tcs) {
         if (tc->get_md_var("ident") == name)
             return tc;
     }
@@ -625,9 +617,7 @@ safe_main(int argc, char** argv, void (*add_tcs)(tc_vector&))
         init_tcs(add_tcs, tcs, vars);
         errcode = run_tc(tcs, argv[0], resfile);
     }
-    for (tc_vector::iterator iter = tcs.begin(); iter != tcs.end(); iter++) {
-        impl::tc* tc = *iter;
-
+    for (auto tc : tcs) {
         delete tc;
     }
 
