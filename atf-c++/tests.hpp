@@ -90,11 +90,11 @@ public:
 
     void init(const vars_map&);
 
-    const std::string get_config_var(const std::string&) const;
-    const std::string get_config_var(const std::string&, const std::string&)
+    std::string get_config_var(const std::string&) const;
+    std::string get_config_var(const std::string&, const std::string&)
         const;
-    const std::string get_md_var(const std::string&) const;
-    const vars_map get_md_vars(void) const;
+    std::string get_md_var(const std::string&) const;
+    vars_map get_md_vars(void) const;
     bool has_config_var(const std::string&) const;
     bool has_md_var(const std::string&) const;
     void set_md_var(const std::string&, const std::string&);

@@ -102,12 +102,12 @@ public:
     //!
     //! \brief Returns the path to file contaning command's stdout.
     //!
-    const std::string stdout_path(void) const;
+    std::string stdout_path(void) const;
 
     //!
     //! \brief Returns the path to file contaning command's stderr.
     //!
-    const std::string stderr_path(void) const;
+    std::string stderr_path(void) const;
 };
 
 // ------------------------------------------------------------------------

@@ -240,28 +240,28 @@ impl::tc::has_md_var(const std::string& var)
     return atf_tc_has_md_var(&pimpl->m_tc, var.c_str());
 }
 
-const std::string
+std::string
 impl::tc::get_config_var(const std::string& var)
     const
 {
     return atf_tc_get_config_var(&pimpl->m_tc, var.c_str());
 }
 
-const std::string
+std::string
 impl::tc::get_config_var(const std::string& var, const std::string& defval)
     const
 {
     return atf_tc_get_config_var_wd(&pimpl->m_tc, var.c_str(), defval.c_str());
 }
 
-const std::string
+std::string
 impl::tc::get_md_var(const std::string& var)
     const
 {
     return atf_tc_get_md_var(&pimpl->m_tc, var.c_str());
 }
 
-const impl::vars_map
+impl::vars_map
 impl::tc::get_md_vars()
     const
 {

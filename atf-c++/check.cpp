@@ -83,13 +83,13 @@ impl::check_result::termsig()
     return atf_check_result_termsig(&m_result);
 }
 
-const std::string
+std::string
 impl::check_result::stdout_path() const
 {
     return atf_check_result_stdout(&m_result);
 }
 
-const std::string
+std::string
 impl::check_result::stderr_path() const
 {
     return atf_check_result_stderr(&m_result);
