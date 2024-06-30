@@ -54,8 +54,7 @@ atf::system_error::system_error(const std::string& who,
 
 atf::system_error::~system_error()
     noexcept
-{
-}
+= default;
 
 int
 atf::system_error::code()

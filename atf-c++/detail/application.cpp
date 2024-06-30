@@ -72,8 +72,7 @@ impl::usage_error::usage_error(const char *fmt, ...)
 
 impl::usage_error::~usage_error()
     noexcept
-{
-}
+= default;
 
 const char*
 impl::usage_error::what()
@@ -113,8 +112,7 @@ impl::app::app(std::string description,
 }
 
 impl::app::~app()
-{
-}
+= default;
 
 bool
 impl::app::inited()
