@@ -65,7 +65,7 @@ impl::match(const std::string& str, const std::string& regex)
             throw std::runtime_error("Invalid regular expression '" + regex +
                                      "'");
 
-        const int res = ::regexec(&preg, str.c_str(), 0, NULL, 0);
+        const int res = ::regexec(&preg, str.c_str(), 0, nullptr, 0);
         regfree(&preg);
         if (res != 0 && res != REG_NOMATCH)
             throw std::runtime_error("Invalid regular expression " + regex);

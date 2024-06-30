@@ -416,12 +416,12 @@ impl::file_info::is_other_executable()
 impl::directory::directory(const path& p)
 {
     DIR* dp = ::opendir(p.c_str());
-    if (dp == NULL)
+    if (dp == nullptr)
         throw system_error(IMPL_NAME "::directory::directory(" +
                            p.str() + ")", "opendir(3) failed", errno);
 
     struct dirent* dep;
-    while ((dep = ::readdir(dp)) != NULL) {
+    while ((dep = ::readdir(dp)) != nullptr) {
         path entryp = p / dep->d_name;
         insert(value_type(dep->d_name, file_info(entryp)));
     }

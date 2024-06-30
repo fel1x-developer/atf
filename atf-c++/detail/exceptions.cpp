@@ -129,13 +129,13 @@ atf::throw_atf_error(atf_error_t err)
     } handlers[] = {
         { "libc", throw_libc_error },
         { "no_memory", throw_no_memory_error },
-        { NULL, throw_unknown_error },
+        { nullptr, throw_unknown_error },
     };
 
     PRE(atf_is_error(err));
 
     handler* h = handlers;
-    while (h->m_name != NULL) {
+    while (h->m_name != nullptr) {
         if (atf_error_is(err, h->m_name)) {
             h->m_func(err);
             UNREACHABLE;
@@ -148,7 +148,7 @@ atf::throw_atf_error(atf_error_t err)
     // should have their counterpart in the C++ library.  Still, removing
     // this will require some code auditing that I can't afford at the
     // moment.
-    INV(h->m_name == NULL && h->m_func != NULL);
+    INV(h->m_name == nullptr && h->m_func != nullptr);
     h->m_func(err);
     UNREACHABLE;
 }

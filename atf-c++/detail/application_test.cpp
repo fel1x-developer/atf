@@ -45,7 +45,7 @@ public:
         char arg2[] = "-Z";
         char arg3[] = "-s";
         char arg4[] = "foo";
-        char *const argv[] = { arg1, arg2, arg3, arg4, NULL };
+        char *const argv[] = { arg1, arg2, arg3, arg4, nullptr };
 
         int ch;
         bool zflag;
@@ -80,7 +80,7 @@ ATF_TEST_CASE_BODY(getopt)
 {
     int argc = 1;
     char arg1[] = "progname";
-    char *const argv[] = { arg1, NULL };
+    char *const argv[] = { arg1, nullptr };
     ATF_REQUIRE_EQ(0, getopt_app().run(argc, argv));
 }
 

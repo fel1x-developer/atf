@@ -337,13 +337,13 @@ ATF_TEST_CASE_BODY(require)
     } *t, tests[] = {
         { "false", false },
         { "true", true },
-        { NULL, false }
+        { nullptr, false }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->cond != NULL; t++) {
+    for (t = &tests[0]; t->cond != nullptr; t++) {
         atf::tests::vars_map config;
         config["condition"] = t->cond;
 
@@ -384,13 +384,13 @@ ATF_TEST_CASE_BODY(require_eq)
         { "1", "2", false },
         { "2", "1", false },
         { "2", "2", true },
-        { NULL, NULL, false }
+        { nullptr, nullptr, false }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->v1 != NULL; t++) {
+    for (t = &tests[0]; t->v1 != nullptr; t++) {
         atf::tests::vars_map config;
         config["v1"] = t->v1;
         config["v2"] = t->v2;
@@ -434,13 +434,13 @@ ATF_TEST_CASE_BODY(require_in)
         { "xxx", false },
         { "fooa", false },
         { "foo ", false },
-        { NULL, false }
+        { nullptr, false }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->value != NULL; t++) {
+    for (t = &tests[0]; t->value != nullptr; t++) {
         atf::tests::vars_map config;
         config["value"] = t->value;
 
@@ -476,13 +476,13 @@ ATF_TEST_CASE_BODY(require_match)
     } *t, tests[] = {
         { "foo.*bar", "this is a foo, bar, baz", true },
         { "bar.*baz", "this is a baz, bar, foo", false },
-        { NULL, NULL, false }
+        { nullptr, nullptr, false }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->regexp != NULL; t++) {
+    for (t = &tests[0]; t->regexp != nullptr; t++) {
         atf::tests::vars_map config;
         config["regexp"] = t->regexp;
         config["string"] = t->string;
@@ -526,13 +526,13 @@ ATF_TEST_CASE_BODY(require_not_in)
         { "xxx", true },
         { "fooa", true },
         { "foo ", true },
-        { NULL, false }
+        { nullptr, false }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->value != NULL; t++) {
+    for (t = &tests[0]; t->value != nullptr; t++) {
         atf::tests::vars_map config;
         config["value"] = t->value;
 
@@ -567,15 +567,15 @@ ATF_TEST_CASE_BODY(require_throw)
         const char *msg;
     } *t, tests[] = {
         { "throw_int", false, "unexpected error" },
-        { "throw_rt", true, NULL },
+        { "throw_rt", true, nullptr },
         { "no_throw_rt", false, "did not throw" },
-        { NULL, false, NULL }
+        { nullptr, false, nullptr }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->what != NULL; t++) {
+    for (t = &tests[0]; t->what != nullptr; t++) {
         atf::tests::vars_map config;
         config["what"] = t->what;
 
@@ -616,18 +616,18 @@ ATF_TEST_CASE_BODY(require_throw_re)
         const char *msg;
     } *t, tests[] = {
         { "throw_int", false, "unexpected error" },
-        { "throw_rt_match", true, NULL },
+        { "throw_rt_match", true, nullptr },
         { "throw_rt_no_match", false,
           "threw.*runtime_error\\(baz foo bar a\\).*"
           "does not match 'foo\\.\\*baz'" },
         { "no_throw_rt", false, "did not throw" },
-        { NULL, false, NULL }
+        { nullptr, false, nullptr }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->what != NULL; t++) {
+    for (t = &tests[0]; t->what != nullptr; t++) {
         atf::tests::vars_map config;
         config["what"] = t->what;
 
@@ -669,16 +669,16 @@ ATF_TEST_CASE_BODY(check_errno)
     } *t, tests[] = {
         { "no_error", false,
           "Expected true value in errno_ok_stub\\(\\) == -1" },
-        { "errno_ok", true, NULL },
+        { "errno_ok", true, nullptr },
         { "errno_fail", false,
           "Expected errno 3, got 4, in errno_fail_stub\\(4\\) == -1" },
-        { NULL, false, NULL }
+        { nullptr, false, nullptr }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->what != NULL; t++) {
+    for (t = &tests[0]; t->what != nullptr; t++) {
         atf::tests::vars_map config;
         config["what"] = t->what;
 
@@ -717,16 +717,16 @@ ATF_TEST_CASE_BODY(require_errno)
     } *t, tests[] = {
         { "no_error", false,
           "Expected true value in errno_ok_stub\\(\\) == -1" },
-        { "errno_ok", true, NULL },
+        { "errno_ok", true, nullptr },
         { "errno_fail", false,
           "Expected errno 3, got 4, in errno_fail_stub\\(4\\) == -1" },
-        { NULL, false, NULL }
+        { nullptr, false, nullptr }
     };
 
     const atf::fs::path before("before");
     const atf::fs::path after("after");
 
-    for (t = &tests[0]; t->what != NULL; t++) {
+    for (t = &tests[0]; t->what != nullptr; t++) {
         atf::tests::vars_map config;
         config["what"] = t->what;
 

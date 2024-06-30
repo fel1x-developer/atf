@@ -80,7 +80,7 @@ construct_argv(const std::string& shell, const int interpreter_argc,
                const char* const* interpreter_argv)
 {
     PRE(interpreter_argc >= 1);
-    PRE(interpreter_argv[0] != NULL);
+    PRE(interpreter_argv[0] != nullptr);
 
     const std::string* script = construct_script(interpreter_argv[0]);
 
@@ -94,7 +94,7 @@ construct_argv(const std::string& shell, const int interpreter_argc,
     for (int i = 1; i < interpreter_argc; i++)
         argv[4 + i - 1] = interpreter_argv[i];
 
-    argv[count - 1] = NULL;
+    argv[count - 1] = nullptr;
 
     return argv;
 }

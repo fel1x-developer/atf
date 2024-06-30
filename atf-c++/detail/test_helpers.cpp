@@ -45,7 +45,7 @@
 #if defined(ATF_C_TESTS_BASE)
 static const char* atf_c_tests_base = ATF_C_TESTS_BASE;
 #else
-static const char* atf_c_tests_base = NULL;
+static const char* atf_c_tests_base = nullptr;
 #endif
 #undef ATF_C_TESTS_BASE
 
@@ -87,7 +87,7 @@ atf::fs::path
 get_process_helpers_path(const atf::tests::tc& tc, bool is_detail)
 {
     const char* helper = "detail/process_helpers";
-    if (atf_c_tests_base == NULL) {
+    if (atf_c_tests_base == nullptr) {
         if (is_detail)
             return atf::fs::path(tc.get_config_var("srcdir")) /
                    ".." / ".." / "atf-c" / helper;

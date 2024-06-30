@@ -57,7 +57,7 @@ void
 print_array(const char* prefix, const char* const* a)
 {
     std::cout << prefix << ":";
-    for (; *a != NULL; a++)
+    for (; *a != nullptr; a++)
         std::cout << " '" << *a << "'";
     std::cout << "\n";
 }
@@ -77,14 +77,14 @@ equal_argvs(const atf::process::argv_array& aa, const char* const* array)
     bool equal = true;
 
     atf::process::argv_array::size_type i = 0;
-    while (equal && (i < aa.size() && array[i] != NULL)) {
+    while (equal && (i < aa.size() && array[i] != nullptr)) {
         if (std::strcmp(aa[i], array[i]) != 0)
             equal = false;
         else
             i++;
     }
 
-    if (equal && (i < aa.size() || array[i] != NULL))
+    if (equal && (i < aa.size() || array[i] != nullptr))
         equal = false;
 
     return equal;
@@ -113,29 +113,29 @@ ATF_TEST_CASE_HEAD(equal_argvs)
 ATF_TEST_CASE_BODY(equal_argvs)
 {
     {
-        const char* const array[] = { NULL };
-        const char* const argv[] = { NULL };
+        const char* const array[] = { nullptr };
+        const char* const argv[] = { nullptr };
 
         ATF_REQUIRE(equal_argvs(atf::process::argv_array(argv), array));
     }
 
     {
-        const char* const array[] = { NULL };
-        const char* const argv[] = { "foo", NULL };
+        const char* const array[] = { nullptr };
+        const char* const argv[] = { "foo", nullptr };
 
         ATF_REQUIRE(!equal_argvs(atf::process::argv_array(argv), array));
     }
 
     {
-        const char* const array[] = { "foo", NULL };
-        const char* const argv[] = { NULL };
+        const char* const array[] = { "foo", nullptr };
+        const char* const argv[] = { nullptr };
 
         ATF_REQUIRE(!equal_argvs(atf::process::argv_array(argv), array));
     }
 
     {
-        const char* const array[] = { "foo", NULL };
-        const char* const argv[] = { "foo", NULL };
+        const char* const array[] = { "foo", nullptr };
+        const char* const argv[] = { "foo", nullptr };
 
         ATF_REQUIRE(equal_argvs(atf::process::argv_array(argv), array));
     }
@@ -152,7 +152,7 @@ ATF_TEST_CASE_HEAD(c_o)
 }
 ATF_TEST_CASE_BODY(c_o)
 {
-    for (struct c_o_test* test = c_o_tests; test->expargv[0] != NULL;
+    for (struct c_o_test* test = c_o_tests; test->expargv[0] != nullptr;
          test++) {
         std::cout << "> Test: " << test->msg << "\n";
 
@@ -174,7 +174,7 @@ ATF_TEST_CASE_HEAD(cpp)
 }
 ATF_TEST_CASE_BODY(cpp)
 {
-    for (struct cpp_test* test = cpp_tests; test->expargv[0] != NULL;
+    for (struct cpp_test* test = cpp_tests; test->expargv[0] != nullptr;
          test++) {
         std::cout << "> Test: " << test->msg << "\n";
 
@@ -195,7 +195,7 @@ ATF_TEST_CASE_HEAD(cxx_o)
 }
 ATF_TEST_CASE_BODY(cxx_o)
 {
-    for (struct cxx_o_test* test = cxx_o_tests; test->expargv[0] != NULL;
+    for (struct cxx_o_test* test = cxx_o_tests; test->expargv[0] != nullptr;
          test++) {
         std::cout << "> Test: " << test->msg << "\n";
 

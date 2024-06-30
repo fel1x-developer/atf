@@ -48,7 +48,7 @@ array_size(const char* const* array)
 {
     std::size_t size = 0;
 
-    for (const char* const* ptr = array; *ptr != NULL; ptr++)
+    for (const char* const* ptr = array; *ptr != nullptr; ptr++)
         size++;
 
     return size;
@@ -83,14 +83,14 @@ ATF_TEST_CASE_HEAD(argv_array_init_carray)
 ATF_TEST_CASE_BODY(argv_array_init_carray)
 {
     {
-        const char* const carray[] = { NULL };
+        const char* const carray[] = { nullptr };
         atf::process::argv_array argv(carray);
 
         ATF_REQUIRE_EQ(argv.size(), 0);
     }
 
     {
-        const char* const carray[] = { "arg0", NULL };
+        const char* const carray[] = { "arg0", nullptr };
         atf::process::argv_array argv(carray);
 
         ATF_REQUIRE_EQ(argv.size(), 1);
@@ -98,7 +98,7 @@ ATF_TEST_CASE_BODY(argv_array_init_carray)
     }
 
     {
-        const char* const carray[] = { "arg0", "arg1", "arg2", NULL };
+        const char* const carray[] = { "arg0", "arg1", "arg2", nullptr };
         atf::process::argv_array argv(carray);
 
         ATF_REQUIRE_EQ(argv.size(), 3);
@@ -193,8 +193,8 @@ ATF_TEST_CASE_BODY(argv_array_assign)
 {
     using atf::process::argv_array;
 
-    const char* const carray1[] = { "arg1", NULL };
-    const char* const carray2[] = { "arg1", "arg2", NULL };
+    const char* const carray1[] = { "arg1", nullptr };
+    const char* const carray2[] = { "arg1", "arg2", nullptr };
 
     std::unique_ptr< argv_array > argv1(new argv_array(carray1));
     std::unique_ptr< argv_array > argv2(new argv_array(carray2));
@@ -208,7 +208,7 @@ ATF_TEST_CASE_BODY(argv_array_assign)
     {
         const char* const* eargv2 = argv2->exec_argv();
         ATF_REQUIRE(std::strcmp(eargv2[0], carray1[0]) == 0);
-        ATF_REQUIRE_EQ(eargv2[1], static_cast< const char* >(NULL));
+        ATF_REQUIRE_EQ(eargv2[1], static_cast< const char* >(nullptr));
     }
 
     argv2.release();
@@ -224,7 +224,7 @@ ATF_TEST_CASE_BODY(argv_array_copy)
 {
     using atf::process::argv_array;
 
-    const char* const carray[] = { "arg0", NULL };
+    const char* const carray[] = { "arg0", nullptr };
 
     std::unique_ptr< argv_array > argv1(new argv_array(carray));
     std::unique_ptr< argv_array > argv2(new argv_array(*argv1));
@@ -237,7 +237,7 @@ ATF_TEST_CASE_BODY(argv_array_copy)
     {
         const char* const* eargv2 = argv2->exec_argv();
         ATF_REQUIRE(std::strcmp(eargv2[0], carray[0]) == 0);
-        ATF_REQUIRE_EQ(eargv2[1], static_cast< const char* >(NULL));
+        ATF_REQUIRE_EQ(eargv2[1], static_cast< const char* >(nullptr));
     }
 
     argv2.release();
@@ -257,16 +257,16 @@ ATF_TEST_CASE_BODY(argv_array_exec_argv)
         argv_array argv;
         const char* const* eargv = argv.exec_argv();
         ATF_REQUIRE_EQ(array_size(eargv), 0);
-        ATF_REQUIRE_EQ(eargv[0], static_cast< const char* >(NULL));
+        ATF_REQUIRE_EQ(eargv[0], static_cast< const char* >(nullptr));
     }
 
     {
-        const char* const carray[] = { "arg0", NULL };
+        const char* const carray[] = { "arg0", nullptr };
         argv_array argv(carray);
         const char* const* eargv = argv.exec_argv();
         ATF_REQUIRE_EQ(array_size(eargv), 1);
         ATF_REQUIRE(std::strcmp(eargv[0], "arg0") == 0);
-        ATF_REQUIRE_EQ(eargv[1], static_cast< const char* >(NULL));
+        ATF_REQUIRE_EQ(eargv[1], static_cast< const char* >(nullptr));
     }
 
     {
@@ -276,7 +276,7 @@ ATF_TEST_CASE_BODY(argv_array_exec_argv)
         const char* const* eargv = argv.exec_argv();
         ATF_REQUIRE_EQ(array_size(eargv), 1);
         ATF_REQUIRE(std::strcmp(eargv[0], "arg0") == 0);
-        ATF_REQUIRE_EQ(eargv[1], static_cast< const char* >(NULL));
+        ATF_REQUIRE_EQ(eargv[1], static_cast< const char* >(nullptr));
     }
 }
 

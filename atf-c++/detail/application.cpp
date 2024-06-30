@@ -104,8 +104,8 @@ impl::option::operator<(const impl::option& o)
 impl::app::app(const std::string& description,
                const std::string& manpage) :
     m_argc(-1),
-    m_argv(NULL),
-    m_prog_name(NULL),
+    m_argv(nullptr),
+    m_prog_name(nullptr),
     m_description(description),
     m_manpage(manpage)
 {
@@ -200,7 +200,7 @@ int
 impl::app::run(int argc, char* const* argv)
 {
     PRE(argc > 0);
-    PRE(argv != NULL);
+    PRE(argv != nullptr);
 
     m_argc = argc;
     m_argv = argv;
@@ -208,7 +208,7 @@ impl::app::run(int argc, char* const* argv)
     m_argv0 = m_argv[0];
 
     m_prog_name = std::strrchr(m_argv[0], '/');
-    if (m_prog_name == NULL)
+    if (m_prog_name == nullptr)
         m_prog_name = m_argv[0];
     else
         m_prog_name++;

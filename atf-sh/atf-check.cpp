@@ -112,7 +112,7 @@ class temp_file : public std::ostream {
 
 public:
     temp_file(const char* pattern) :
-        std::ostream(NULL),
+        std::ostream(nullptr),
         m_fd(-1)
     {
         const atf::fs::path file = atf::fs::path(
@@ -223,7 +223,7 @@ static struct name_number {
     { "term", SIGTERM },
     { "usr1", SIGUSR1 },
     { "usr2", SIGUSR2 },
-    { NULL, INT_MIN },
+    { nullptr, INT_MIN },
 };
 
 static int
@@ -231,7 +231,7 @@ signal_name_to_number(const std::string& str)
 {
     struct name_number* iter = signal_names_to_numbers;
     int signo = INT_MIN;
-    while (signo == INT_MIN && iter->name != NULL) {
+    while (signo == INT_MIN && iter->name != nullptr) {
         if (str == iter->name || str == std::string("sig") + iter->name)
             signo = iter->signo;
         else
@@ -400,7 +400,7 @@ flatten_argv(char* const* argv)
     std::string cmdline;
 
     char* const* arg = &argv[0];
-    while (*arg != NULL) {
+    while (*arg != nullptr) {
         if (arg != &argv[0])
             cmdline += ' ';
 
@@ -419,7 +419,7 @@ execute(const char* const* argv)
     // TODO: This should go to stderr... but fixing it now may be hard as test
     // cases out there might be relying on stderr being silent.
     std::cout << "Executing command [ ";
-    for (int i = 0; argv[i] != NULL; ++i)
+    for (int i = 0; argv[i] != nullptr; ++i)
         std::cout << argv[i] << " ";
     std::cout << "]\n";
     std::cout.flush();
@@ -439,7 +439,7 @@ execute_with_shell(char* const* argv)
     sh_argv[0] = shell.c_str();
     sh_argv[1] = "-c";
     sh_argv[2] = cmd.c_str();
-    sh_argv[3] = NULL;
+    sh_argv[3] = nullptr;
     return execute(sh_argv);
 }
 

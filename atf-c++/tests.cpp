@@ -220,7 +220,7 @@ impl::tc::init(const vars_map& config)
     cwraps[&pimpl->m_tc] = this;
 
     err = atf_tc_init(&pimpl->m_tc, pimpl->m_ident.c_str(), pimpl->wrap_head,
-        pimpl->wrap_body, pimpl->m_has_cleanup ? pimpl->wrap_cleanup : NULL,
+        pimpl->wrap_body, pimpl->m_has_cleanup ? pimpl->wrap_cleanup : nullptr,
         array.data());
     if (atf_is_error(err))
         throw_atf_error(err);
@@ -270,7 +270,7 @@ impl::tc::get_md_vars()
     char **array = atf_tc_get_md_vars(&pimpl->m_tc);
     try {
         char **ptr;
-        for (ptr = array; *ptr != NULL; ptr += 2)
+        for (ptr = array; *ptr != nullptr; ptr += 2)
             vars[*ptr] = *(ptr + 1);
     } catch (...) {
         atf_utils_free_charpp(array);

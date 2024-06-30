@@ -91,7 +91,7 @@ impl::argv_array::argv_array(const char* arg1, ...)
         const char* nextarg;
 
         va_start(ap, arg1);
-        while ((nextarg = va_arg(ap, const char*)) != NULL)
+        while ((nextarg = va_arg(ap, const char*)) != nullptr)
             m_args.push_back(nextarg);
         va_end(ap);
     }
